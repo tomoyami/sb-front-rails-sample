@@ -1,0 +1,17 @@
+.container
+  .row
+    .col-md-4
+    .col-md-4
+      .login-panel
+      - if @response_body.present?
+        .alert.alert-danger.error-message role="alert"
+          - @response_body['errors'].each do |error|
+            p = error
+      .panel.panel-default
+        = form_for(@user, url: { action: 'sign_in' }) do |f|
+          h2.form-signin-heading loungeek
+          label.sr-only for="inputLoginId"  アカウント
+          = f.text_field :email, class: 'form-control', autofocus: '', required: true, placeholder: 'email'
+          label.sr-only for="inputPassword"  Password
+          = f.password_field :password, class: 'form-control', required: true, placeholder: 'password'
+          = f.submit 'サインイン', class: 'btn btn-lg btn-primary btn-block'

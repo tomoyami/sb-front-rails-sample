@@ -1,0 +1,8 @@
+.main.col-md-12
+  .row
+    .col-lg-6
+      .card.dashboard-card.dashboard-area
+        .card-header 新着イベント
+        .list-group.list-group-flush
+          - @events.each do |event|
+            = link_to event.name, event_path(id: event.id), class: 'list-group-item list-group-item-action clearfix'
